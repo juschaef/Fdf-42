@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 15:28:57 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/05 17:52:42 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:39:34 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ void	erase(t_win *win)
 	if (win->draw_type == DRAW)
 		mlx_clear_window(win->init, win->win);
 	expose_hook(win);
+}
+
+int		sq(int x)
+{
+	return (x * x);
 }

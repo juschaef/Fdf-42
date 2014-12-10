@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 17:08:11 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/05 17:55:51 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:38:41 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void	vanilla_mode(t_win *win)
 	win->move_lr = 1;
 	win->move_ud = 1;
 	win->draw_type = PUT;
+	win->angle = 0;
+	win->legend_display = ON;
 	erase(win);
 }

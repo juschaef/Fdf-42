@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/07 10:48:19 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:38:17 by juschaef         ###   ########.fr       */
+/*   Created: 2014/12/08 11:40:36 by juschaef          #+#    #+#             */
+/*   Updated: 2014/12/10 11:38:50 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		increase_pike(t_win *win)
+void	rotate_left(t_win *win)
 {
-	win->pad_h += 1.2;
+	win->angle += 0.05;
 	erase(win);
 }
 
-void		decrease_pike(t_win *win)
+void	rotate_right(t_win *win)
 {
-	win->pad_h -= 1.2;
+	win->angle -= 0.05;
+	erase(win);
+}
+
+void	pivote_z(t_win *win)
+{
+	win->rot = BET_Z;
+	erase(win);
+}
+
+void	pivote_y(t_win *win)
+{
+	win->rot = BET_Y;
+	erase(win);
+}
+
+void	pivote_x(t_win *win)
+{
+	win->rot = BET_X;
 	erase(win);
 }

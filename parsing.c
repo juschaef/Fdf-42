@@ -6,11 +6,21 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 17:33:43 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/05 17:13:50 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:38:25 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int			count_map_height(t_point **grid)
+{
+	int	count;
+
+	count = 0;
+	while (grid[count] != NULL)
+		count++;
+	return (count);
+}
 
 t_point		**create_map(t_win *win)
 {
@@ -24,15 +34,26 @@ t_point		**create_map(t_win *win)
 	grid = (t_point **)malloc(sizeof(t_point *) * len_tab(win->path));
 	if (!(fd = open(win->path, O_RDONLY)))
 		exit(0);
-	while (get_next_line(fd, &temp))
+	while (get_next_line(fd, &temp) == 1)
 	{
 		grid[i] = create_int_table(win, temp, i);
 		i++;
 	}
 	grid[i] = create_int_table(win, temp, i);
 	close(fd);
-	win->map_h = i + 1;
+	win->map_h = count_map_height(grid);
 	return (grid);
+}
+
+int			search_number(char *str)
+{
+	while (*str)
+	{
+		if (ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
 t_point		*create_int_table(t_win *win, char *str, int pos)
@@ -42,6 +63,8 @@ t_point		*create_int_table(t_win *win, char *str, int pos)
 	int		i;
 	int		size;
 
+	if (search_number(str))
+		return (NULL);
 	i = 0;
 	str_lst = ft_strsplit(str, ' ');
 	size = count_map_length(str_lst);

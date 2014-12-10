@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 15:38:55 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/07 10:55:59 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:38:59 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <libft.h>
-# include <get_next_line.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <math.h>
@@ -31,8 +30,14 @@
 # define OPTION int
 # define ISO 1
 # define PARA 0
+# define OFF 0
+# define ON 1
 # define PUT 0
 # define DRAW 1
+# define BET_X 0
+# define BET_Y 1
+# define BET_Z 2
+# define INIT win->init, win->win,
 
 typedef struct	s_point
 {
@@ -55,9 +60,12 @@ typedef struct	s_win
 	int			color;
 	t_point		**map;
 	char		*path;
+	int			rot;
 	int			map_w;
 	int			map_h;
 	int			max_z;
+	int			legend_display;
+	float		angle;
 	int			pad;
 	int			move_lr;
 	int			move_ud;
@@ -74,6 +82,16 @@ typedef struct	s_bresenham
 	int			sign_y;
 	int			delta_error;
 }				t_bres;
+
+typedef struct	s_rotate_point
+{
+	float		act_px;
+	float		act_py;
+	float		act_pz;
+	float		px;
+	float		py;
+	float		pz;
+}				t_rp;
 
 int				count_map_length(char **str);
 int				len_tab(char *argv);
@@ -109,5 +127,17 @@ void			vanilla_mode(t_win *win);
 int				mouse_hook(int button, int x, int y, t_win *win);
 void			increase_pike(t_win *win);
 void			decrease_pike(t_win *win);
+void			rotate_left(t_win *win);
+void			rotate_right(t_win *win);
+int				key_hook2(int keycode, t_win *win);
+int				sq(int x);
+void			calcule_rotation(t_win *win, t_point *point);
+void			pivote_z(t_win *win);
+void			pivote_y(t_win *win);
+void			pivote_x(t_win *win);
+void			put_info_to_windows(t_win *win);
+void			put_meta(t_win *win);
+void			hide_legend(t_win *win);
+void			put_black_screen(t_win *win);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 17:55:51 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/05 16:58:17 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:40:15 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,49 @@ void		calcule_coord(t_win *win)
 	draw_map(win);
 }
 
-void		calculate(t_win *win, t_point *point)
+void		rotate_w(t_win *win, t_rp *rp)
 {
-	int act_x;
-	int act_y;
-	int act_z;
+	rp->px = rp->act_px * cos(win->angle) - rp->act_py * sin(win->angle);
+	rp->py = rp->act_px * sin(win->angle) + rp->act_py * cos(win->angle);
+	rp->pz = rp->act_pz;
+}
 
-	act_x = point->d3x * win->pad;
-	act_y = point->d3y * win->pad;
-	act_z = point->d3z * win->pad_h;
+void		rotate_y(t_win *win, t_rp *rp)
+{
+	rp->px = rp->act_px * cos(win->angle) + rp->act_pz * sin(win->angle);
+	rp->py = rp->act_py;
+	rp->pz = rp->act_px * -sin(win->angle) + rp->act_pz * cos(win->angle);
+}
+
+void		rotate_x(t_win *win, t_rp *rp)
+{
+	rp->px = rp->act_px;
+	rp->py = rp->act_py * cos(win->angle) - rp->act_pz * sin(win->angle);
+	rp->pz = rp->act_py * sin(win->angle) + rp->act_pz * cos(win->angle);
+}
+
+void		calculate(t_win *win, t_point *pt)
+{
+	t_rp	*rp;
+
+	rp = (t_rp *)malloc(sizeof(t_rp));
+	rp->act_px = pt->d3x * win->pad - (sqrt(sq(win->map_h) + sq(win->map_w)));
+	rp->act_py = pt->d3y * win->pad - (sqrt(sq(win->map_h) + sq(win->map_w)));
+	rp->act_pz = pt->d3z * win->pad_h;
+	if (win->rot == BET_Z)
+		rotate_w(win, rp);
+	else if (win->rot == BET_Y)
+		rotate_y(win, rp);
+	else
+		rotate_x(win, rp);
 	if (win->opt == ISO)
 	{
-		point->d2x = act_x - act_y + WIN_W * 0.5;
-		point->d2y = -act_z + act_x * 0.5 + act_y * 0.5 + WIN_H * 0.3;
+		pt->d2x = rp->px - rp->py + WIN_W * 0.5;
+		pt->d2y = -rp->pz + rp->px * 0.5 + rp->py * 0.5 + WIN_H * 0.3;
 	}
 	else if (win->opt == PARA)
 	{
-		point->d2x = act_x - act_z + WIN_W * 0.5;
-		point->d2y = act_y + -1 * 0.5 * act_z + WIN_H * 0.3;
+		pt->d2x = rp->px - rp->pz + WIN_W * 0.5;
+		pt->d2y = rp->py + -1 * 0.5 * rp->pz + WIN_H * 0.3;
 	}
 }

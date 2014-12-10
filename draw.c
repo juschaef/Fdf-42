@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 12:33:42 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/05 17:20:08 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/10 11:32:45 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		draw_line(t_win *win, t_point *point1, t_point *point2)
 	int		e2;
 	t_bres	*bres;
 
-	bres = bres_construct(point1, point2, (win->max_z * win->pad_h));
+	bres = bres_construct(point1, point2, (win->max_z));
 	x = point1->d2x;
 	y = point1->d2y;
 	while (1)
@@ -96,8 +96,7 @@ t_bres		*bres_construct(t_point *point1, t_point *point2, int max)
 	bres->delta_y = ft_abs(point2->d2y - point1->d2y);
 	bres->sign_y = point1->d2y < point2->d2y ? 1 : -1;
 	bres->delta_error = (bres->delta_x > bres->delta_y ? bres->delta_x :
-		-(bres->delta_y))
-	/ 2;
+		-(bres->delta_y)) / 2;
 	point1->color = choose_color(point1->d3z, point2->d3z, max);
 	return (bres);
 }
