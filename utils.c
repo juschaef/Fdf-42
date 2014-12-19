@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 15:28:57 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:39:34 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/11 14:51:25 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,20 @@ int		len_tab(char *argv)
 	int		size;
 
 	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Fdf");
+		exit(0);
+	}
 	buff = (char *)ft_strnew(200);
 	size = 0;
 	while ((ret = read(fd, buff, 200)) > 0)
 	{
+		if (ret == -1)
+		{
+			perror("bouh");
+			exit(0);
+		}
 		size += ret;
 	}
 	close(fd);

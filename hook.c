@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 11:31:15 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:32:19 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/19 17:39:22 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		key_hook(int keycode, t_win *win)
 
 int		key_hook2(int keycode, t_win *win)
 {
-	printf("key : %d\n", keycode);
 	if (keycode == 65307)
 		exit(0);
 	if (keycode == 65450)

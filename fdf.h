@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 15:38:55 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:38:59 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/11 14:54:17 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 
 # define WIN_H 1200
 # define WIN_W 1900
 
-# define BLUE  0x0041FF
+# define BLUE 0x0041FF
 # define BROWN 0xAD4F09
 # define GREEN 0x25FF50
 # define WHITE 0xFFFFFF
@@ -37,7 +39,6 @@
 # define BET_X 0
 # define BET_Y 1
 # define BET_Z 2
-# define INIT win->init, win->win,
 
 typedef struct	s_point
 {

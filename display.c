@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 11:21:39 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:43:37 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/19 17:44:16 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ void	put_meta(t_win *win)
 	mlx_string_put(win->init, win->win, 1700, 35, 0xFFFFFF, "Legend :");
 	mlx_string_put(win->init, win->win, 1700, 50, 0xFFFFFF, win->path);
 	mlx_string_put(win->init, win->win, 1700, 65, 0xFFFFFF, "Zoom : '+' / '-'");
-	mlx_string_put(win->init, win->win, 1700, 80, 0xFFFFFF, "Rotate :
-		'*' / '/'");
-	mlx_string_put(win->init, win->win, 1700, 95, 0xFFFFFF, "change rotation
-		: 'x' / 'c' / 'v'");
-	mlx_string_put(win->init, win->win, 1700, 110, 0xFFFFFF, "Change output mode
-		:'d' / 'f'");
-	mlx_string_put(win->init, win->win, 1700, 125, 0xFFFFFF, "Change projection
-		: 'i' / 'p'");
-	mlx_string_put(win->init, win->win, 1700, 140, 0xFFFFFF, "move :
-		direction arrow");
-	mlx_string_put(win->init, win->win, 1700, 155, 0xFFFFFF, "change Z :
-		'mouse 1' / 'mouse 3'");
-	mlx_string_put(win->init, win->win, 1700, 170, 0xFFFFFF, "original setting
-		: 'o'");
-	mlx_string_put(win->init, win->win, 1700, 185, 0xFFFFFF, "hide legend
-		: 'h'");
+	mlx_string_put(win->init, win->win, 1700, 80, 0xFFFFFF,
+		"Rotate : '*' / '/'");
+	mlx_string_put(win->init, win->win, 1700, 95, 0xFFFFFF,
+		"change rotation : 'x' / 'c' / 'v'");
+	mlx_string_put(win->init, win->win, 1700, 110, 0xFFFFFF,
+		"Change output mode :'d' / 'f'");
+	mlx_string_put(win->init, win->win, 1700, 125, 0xFFFFFF,
+		"Change projection : 'i' / 'p'");
+	mlx_string_put(win->init, win->win, 1700, 140, 0xFFFFFF,
+		"move :direction arrow");
+	mlx_string_put(win->init, win->win, 1700, 155, 0xFFFFFF,
+		"change Z : 'mouse 1' / 'mouse 3'");
+	mlx_string_put(win->init, win->win, 1700, 170, 0xFFFFFF,
+		"original setting : 'o'");
+	mlx_string_put(win->init, win->win, 1700, 185, 0xFFFFFF,
+		"hide legend : 'h'");
 }
 
 void	put_black_screen(t_win *win)

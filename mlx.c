@@ -6,7 +6,7 @@
 /*   By: juschaef <juschaef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 17:35:13 by juschaef          #+#    #+#             */
-/*   Updated: 2014/12/10 11:32:11 by juschaef         ###   ########.fr       */
+/*   Updated: 2014/12/19 17:43:14 by juschaef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	ft_import_map(t_win *win)
 	mlx_mouse_hook(win->win, mouse_hook, win);
 	mlx_expose_hook(win->win, expose_hook, win);
 	mlx_loop(win->init);
-	(void)win;
 }
