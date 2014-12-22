@@ -10,6 +10,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
+	make -C libft
 	gcc -Wall -Wextra -Werror -c $(LIB_H) $(SRC) $(FLAG) 
 	gcc -Wall -Wextra -Werror -g $(OBJ) $(LIB_H) $(LIB) $(FLAG) -o $(NAME)
 
